@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body>
+    <body class="yui3-skin-sam">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -24,16 +24,34 @@
         <div id="main">
             <div id="content">
                 <div id="left">
+                    <div id="nav"></div>
                 </div>
                 <div id="middle">
+                    <div id="text"><a href="http://yuilibrary.com/yui/docs/app/#getting-started">yui</a></div>
                 </div>
                 <div id="right">
                 </div>
             </div>
         </div>
 
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+
+        <script>
+            // Create a new YUI instance and populate it with the required modules.
+            YUI().use('app-base','app-transitions', function (Y) {
+                var basicApp = new Y.App.Base()
+                var fancyApp = new Y.App({
+                    transitions: true,
+                    views: {
+                        home: {preserve: true},
+                        users: {preserve: true},
+                        user: {parent: 'users'}
+                    }
+                })
+            });
+        </script>
 
     </body>
 </html>
